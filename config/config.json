@@ -1,7 +1,7 @@
 {
     "development": {
         "username": "root",
-        "password": "Cleveland194146!*",
+        "password": "",
         "database": "media_search_db",
         "host": "127.0.0.1",
         "dialect": "mysql"
