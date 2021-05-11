@@ -1,3 +1,6 @@
+![Main Page](https://user-images.githubusercontent.com/74691495/117744688-07eff100-b1be-11eb-935f-f04f6c6aebee.JPG)
+![Media Page](https://user-images.githubusercontent.com/74691495/117744690-07eff100-b1be-11eb-91dc-8a8921f731e8.JPG)
+![Login Page](https://user-images.githubusercontent.com/74691495/117744691-08888780-b1be-11eb-8ffd-b1a6db68d9a4.JPG)
 # Media-Organizer 
 
 ## Description 
