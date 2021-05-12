@@ -20,6 +20,7 @@ CREATE TABLE media
 	media_artist varchar(255) NOT NULL,
 	media_location varchar(255) NOT NULL,
 	media_rating int NOT NULL,
+	user_id int NOT NULL,
 	PRIMARY KEY (id),
-	FOREIGN KEY (client_id) REFERENCES clients(id)
+	FOREIGN KEY (user_id) REFERENCES users(id)
 );
