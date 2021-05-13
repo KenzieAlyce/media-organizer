@@ -1,14 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+
+import './App.css'; 
+import Nav from './components/pages/Nav';
+import Main from './components/pages/Main';
 import SignUp from './components/pages/signup';
 import SignIn from './components/pages/sighin';
-
+import { BrowserRouter as Router, Switch, Route, } from "react-router-dom";
+//import Avatar from '@material-ui/core/Avatar';
 function App() {
   return (
-    <div className="App">
-     <SignUp />
-     {/* <SignIn /> */}
-    </div>
+    <>
+    <Router>
+      <Nav />
+      <Switch>
+     <Route exact path="/SignIn" component={SignIn}/>
+    <Route exact path="/SignUp" component={SignUp}/>
+    <Route  path="/" component={Main}/>
+    </Switch>
+    </Router>
+  </>
   );
 }
 
