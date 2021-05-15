@@ -3,7 +3,7 @@ import './App.css';
 import Nav from './components/pages/Nav';
 import Main from './components/pages/Main';
 import SignUp from './components/pages/signup';
-import SignIn from './components/pages/sighin';
+import SignIn from './components/pages/signin';
 import { BrowserRouter as Router, Switch, Route, } from "react-router-dom";
 //import Avatar from '@material-ui/core/Avatar';
 function App() {
