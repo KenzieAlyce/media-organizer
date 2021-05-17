@@ -6,6 +6,7 @@ import Paper from '@material-ui/core/Paper';
 import Popper from '@material-ui/core/Popper';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
+import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,6 +49,8 @@ export default function MenuListComposition() {
         <MenuList>
           <MenuItem>Profile</MenuItem>
           <MenuItem>My account</MenuItem>
+          <MenuItem><Link href="/SignUp">Sign Up</Link></MenuItem>
+          <MenuItem><Link href="/login">Sign In</Link></MenuItem>
           <MenuItem>Logout</MenuItem>
         </MenuList>
       </Paper>
