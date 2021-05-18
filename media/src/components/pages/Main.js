@@ -1,4 +1,5 @@
 import React from 'react';
+import {useAuth0} from '@auth0/auth0-react'
 import Button from '@material-ui/core/Button';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import Grow from '@material-ui/core/Grow';
@@ -36,6 +37,7 @@ export default function MenuListComposition() {
     }
   }
   // return focus to the button when we transitioned from !open -> open
+  const { loginWithRedirect } = useAuth0();
   const prevOpen = React.useRef(open);
   React.useEffect(() => {
     if (prevOpen.current === true && open === false) {
@@ -50,7 +52,7 @@ export default function MenuListComposition() {
           <MenuItem>Profile</MenuItem>
           <MenuItem>My account</MenuItem>
           <MenuItem><Link href="/SignUp">Sign Up</Link></MenuItem>
-          <MenuItem><Link href="/login">Sign In</Link></MenuItem>
+          <MenuItem onClick={() => loginWithRedirect()}>Login</MenuItem>
           <MenuItem>Logout</MenuItem>
         </MenuList>
       </Paper>
