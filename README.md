@@ -20,11 +20,10 @@ SO THAT I can easily recall and locate the items or files when desired
 ```
 
 ## Project Roles 
-* Database(Postgres)  - Liz Giddings 
-* User authentication (possibly new technology?) - Group
-* Media APIs- (pop up for more info?) - Group
-* React (Jarrett Heller, MacKenzie Clinton)
-* Custom CSS, Material UI (Michael Swigart)
+* Database  - Sarah Finck
+* User authentication - MacKenzie Clinton
+* React (Jarrett Heller, Michael Swigart)
+* Material UI (Michael Swigart, Group)
 
 ## Project Schedule
 
