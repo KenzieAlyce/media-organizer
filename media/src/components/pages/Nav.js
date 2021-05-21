@@ -89,7 +89,7 @@ export default function MenuAppBar() {
           <MenuItem>Logout</MenuItem>
         </Menu>
           <Typography variant="h6" className={classes.title}>
-            Photos
+            My Library
           </Typography>
           {auth && (
             <div>

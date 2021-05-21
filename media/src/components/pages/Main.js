@@ -35,6 +35,7 @@ export default function MenuListComposition() {
 			...previousArray,
 			{ title, author, location, rating, mediaType },
 		]);
+		
 		setTitle('');
 		setAuthor('');
 		setLocation('');
