@@ -1,19 +1,15 @@
-const mysql = require('mysql');
+require('dotenv').config();
 
-const connection = mysql.createConnection({
-  host: 'localhost',
-  port: 3306,
-  user: 'root',
-  password: '',
-  database: 'media_search_db',
-});
+const Sequelize = require('sequelize');
 
-connection.connect((err) => {
-  if (err) {
-    console.error(`error connecting: ${err.stack}`);
-    return;
-  }
-  console.log(`connected as id ${connection.threadId}`);
-});
+const sequelize = process.env.JAWSDB_URL
+  ? new Sequelize(process.env.JAWSDB_URL)
+  : new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PW, {
+      host: 'localhost',
+      dialect: 'mysql',
+      dialectOptions: {
+        decimalNumbers: true,
+      },
+    });
 
-module.exports = connection;
+module.exports = sequelize;
