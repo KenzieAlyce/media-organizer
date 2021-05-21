@@ -1,5 +1,6 @@
 const express = require("express");
 const session = require('express-session');
+const sequelize = require('./config/connection');
 
 const logger = require("morgan");
 const PORT = process.env.PORT || 3001;
@@ -81,14 +82,20 @@ app.use('/', usersRouter);
 app.use('/', mediaRouter);
 app.use('/', indexRouter);
 
-db.sequelize.sync().then(() => {
-    app.listen(PORT, () => {
-        console.log(
-            "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
-            PORT,
-            PORT
-        );
-    });
+// db.sequelize.sync().then(() => {
+//     app.listen(PORT, () => {
+//         console.log(
+//             "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
+//             PORT,
+//             PORT
+//         );
+//     });
+// });
+
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => {
+    console.log(`==> 🌎  Listening on port ${PORT} . Visit http://localhost:${PORT} in your browser.`);
+  });  
 });
 
 // User Table

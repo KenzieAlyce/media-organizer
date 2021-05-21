@@ -2,9 +2,9 @@ const { Model, DataTypes } = require("sequelize");
 
 const sequelize = require('../config/connection');
 
-class Media extends Model {}
+class User extends Model {}
 
-Media.init(
+User.init(
   {
     // define columns
     id: {
@@ -13,32 +13,17 @@ Media.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    media_name: {
+    user_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    media_type: {
+    user_email: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    media_artist: {
+    user_password: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    media_location: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    media_rating: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    user_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "user",
-        key: "id",
-      },
     },
   },
   {
@@ -46,8 +31,8 @@ Media.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "media",
+    modelName: "user",
   }
 );
 
-module.exports = Media;
+module.exports = User;
