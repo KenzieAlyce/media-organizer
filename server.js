@@ -72,12 +72,14 @@ const userInViews = require('./lib/middleware/userInViews');
 const authRouter = require('./routes/auth');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const mediaRouter = require('./routes/media');
 
 // ..
 app.use(userInViews());
 app.use('/', authRouter);
-app.use('/', indexRouter);
 app.use('/', usersRouter);
+app.use('/', mediaRouter);
+app.use('/', indexRouter);
 
 db.sequelize.sync().then(() => {
     app.listen(PORT, () => {
