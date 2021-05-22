@@ -17,9 +17,10 @@ import blue from '@material-ui/core/colors/red';
 import { createMuiTheme } from '@material-ui/core/styles';
 
 
+
 const useStyles = makeStyles((theme) => ({
 	root: {
-		
+	
 		maxWidth:225,
 		 minWidth: 225,
 		display: 'flex',
@@ -100,35 +101,35 @@ export default function MenuListComposition() {
 				style={{ height: '300px' }}
 			>
 				<FormControl>
-					<FormLabel htmlFor='title'>title</FormLabel>
+					<FormLabel htmlFor='title'>Title</FormLabel>
 					<Input
 						id='title'
 						onChange={(e) => setTitle(e.target.value)}
 					/>
 				</FormControl>
 				<FormControl>
-					<FormLabel htmlFor='author'>author</FormLabel>
+					<FormLabel htmlFor='author'>Author</FormLabel>
 					<Input
 						id='author'
 						onChange={(e) => setAuthor(e.target.value)}
 					/>
 				</FormControl>
 				<FormControl>
-					<FormLabel htmlFor='location'>location</FormLabel>
+					<FormLabel htmlFor='location'>Location</FormLabel>
 					<Input
 						id='location'
 						onChange={(e) => setLocation(e.target.value)}
 					/>
 				</FormControl>
 				<FormControl>
-					<FormLabel htmlFor='rating'>rating</FormLabel>
+					<FormLabel htmlFor='rating'>Rating</FormLabel>
 					<Input
 						id='rating'
 						onChange={(e) => setRating(e.target.value)}
 					/>
 				</FormControl>
 				<FormControl>
-					<FormLabel htmlFor='mediaType'>mediaType</FormLabel>
+					<FormLabel htmlFor='mediaType'>Media Type</FormLabel>
 					<Input
 						id='mediaType'
 						onChange={(e) => setMediaType(e.target.value)}
@@ -147,20 +148,20 @@ export default function MenuListComposition() {
 				<>
 				    <Card className={classes.root} variant="outlined">
 					<CardContent>
-					  <Typography className={classes.title} color="textSecondary" gutterBottom>
-					  title {index + 1}: {media.title}
+					  <Typography  variant="h5" component="h2">
+					  Title {index + 1}: {media.title}
 					  </Typography>
-					  <Typography variant="h5" component="h2">
-					  author {index + 1}: {media.author}
+					  <Typography variant="h5" component="h6">
+					  Author {index + 1}: {media.author}
 					  </Typography>
-					  <Typography className={classes.pos} color="textSecondary">
-					  location {index + 1}: {media.location}
+					  <Typography variant="h5" component="h6">
+					  Location {index + 1}: {media.location}
 					  </Typography>
-					  <Typography variant="body2" component="p">
-					  rating {index + 1}: {media.rating}
+					  <Typography variant="h5" component="h6">
+					  Rating {index + 1}: {media.rating}
 					  </Typography>
-					  <Typography className={classes.pos} color="textSecondary">
-					  mediaType {index + 1}: {media.mediaType}
+					  <Typography variant="h5" component="h6">
+					  Media Type {index + 1}: {media.mediaType}
 					  </Typography>
 					</CardContent>
 				  </Card>
