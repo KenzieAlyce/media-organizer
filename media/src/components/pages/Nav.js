@@ -13,6 +13,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import MenuList from '@material-ui/core/MenuList';
 import Link from '@material-ui/core/Link';
+/* eslint-disable */
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,7 +31,8 @@ export default function MenuAppBar() {
   const classes = useStyles();
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
+  const [menu, setMenu] = React.useState(null);
+  const open = Boolean(menu);
   const ProfileMenu = Boolean(anchorEl);
 
   const handleChange = (event) => {
@@ -38,15 +40,25 @@ export default function MenuAppBar() {
   };
 
   const handleMenu = (event) => {
-    setAnchorEl(event.currentTarget);
+    console.log('broken',event.currentTarget);
+    console.log(menu);
+    console.log(anchorEl);
+    setMenu(event.currentTarget);
   };
 
   const handleProfile = (event) => {
+    console.log('fixed',event.currentTarget);
+    console.log(menu);
+    console.log(anchorEl);
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = () => {
+  const handleCloseProfile = () => {
     setAnchorEl(null);
+  };
+
+  const handleCloseMenu = () => {
+    setMenu(null);
   };
 
   return (
@@ -73,20 +85,19 @@ export default function MenuAppBar() {
          anchorEl={anchorEl}
          anchorOrigin={{
            vertical: 'top',
-           horizontal: 'right',
+           horizontal: 'left',
          }}
          keepMounted
          transformOrigin={{
            vertical: 'top',
-           horizontal: 'right',
+           horizontal: 'left',
          }}
          open={open}
-         onClose={handleClose}> 
-          <MenuItem>Profile</MenuItem>
-          <MenuItem>My account</MenuItem>
-          <MenuItem><Link href="/SignUp">Sign Up</Link></MenuItem>
-          <MenuItem>Login</MenuItem>
-          <MenuItem>Logout</MenuItem>
+         onClose={handleCloseMenu}> 
+          <MenuItem onClick={handleCloseMenu}><Link href="/">Main</Link></MenuItem>
+          <MenuItem onClick={handleCloseMenu}><Link href="/SignUp">SignUp</Link></MenuItem>
+          <MenuItem onClick={handleCloseMenu}><Link href="/SignIn">SignIn</Link></MenuItem>
+          
         </Menu>
           <Typography variant="h6" className={classes.title}>
             My Library
@@ -115,10 +126,10 @@ export default function MenuAppBar() {
                   horizontal: 'right',
                 }}
                 open={ProfileMenu}
-                onClose={handleClose}
+                onClose={handleCloseProfile}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={handleCloseProfile}><Link href="">Profile</Link></MenuItem>
+                <MenuItem onClick={handleCloseMenu}><Link href="">logout</Link></MenuItem>
               </Menu>
             </div>
           )}
