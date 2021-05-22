@@ -13,9 +13,13 @@ import { FormControl, FormLabel, Grid, Input } from '@material-ui/core';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import blue from '@material-ui/core/colors/red';
+import { createMuiTheme } from '@material-ui/core/styles';
+
 
 const useStyles = makeStyles((theme) => ({
 	root: {
+		
 		maxWidth:225,
 		 minWidth: 225,
 		display: 'flex',
@@ -30,7 +34,21 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: 12,
   },
 }));
+
+// const theme = createMuiTheme({
+// 	palette: {
+// 	  primary: {
+		
+// 		main: '#3f50b5',
+		
+// 		contrastText: '#fff',
+// 	  },
+	  
+// 	},
+//   });
+
 export default function MenuListComposition() {
+	const primary = blue[500]; 
 	const classes = useStyles();
 	const [open, setOpen] = React.useState(false);
 	const [title, setTitle] = useState();
@@ -47,7 +65,8 @@ export default function MenuListComposition() {
 			...previousArray,
 			{ title, author, location, rating, mediaType },
 		]);
-		
+		const Jarrett = {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({ title, author, location, rating, mediaType })}
+		fetch('/api/media', Jarrett).then(response => response.json()).then(data => console.log(data))
 		setTitle('');
 		setAuthor('');
 		setLocation('');
