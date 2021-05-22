@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import Button from '@material-ui/core/Button';
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
-import Grow from '@material-ui/core/Grow';
 import Paper from '@material-ui/core/Paper';
-import Popper from '@material-ui/core/Popper';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import Link from '@material-ui/core/Link';
@@ -14,18 +11,22 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import blue from '@material-ui/core/colors/red';
-import { createMuiTheme } from '@material-ui/core/styles';
-
-
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Radio from '@material-ui/core/Radio';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
-	
-		maxWidth:225,
+	    flexGrow:1,
 		 minWidth: 225,
 		display: 'flex',
 	},
+    control:{
+     padding:theme.spacing(2),
+	},
 	paper: {
+		height:225,
+		width:225,
 		marginRight: theme.spacing(2),
 	},
   title: {
@@ -33,23 +34,18 @@ const useStyles = makeStyles((theme) => ({
   },
   pos: {
     marginBottom: 12,
+  }, createMuiTheme: {
+      float:'right',
+  },cards:{
+    maxWidth:1200,
+	margin:0,
+	spacing:2,
+	display:Grid,
+
   },
 }));
 
-// const theme = createMuiTheme({
-// 	palette: {
-// 	  primary: {
-		
-// 		main: '#3f50b5',
-		
-// 		contrastText: '#fff',
-// 	  },
-	  
-// 	},
-//   });
-
 export default function MenuListComposition() {
-	const primary = blue[500]; 
 	const classes = useStyles();
 	const [open, setOpen] = React.useState(false);
 	const [title, setTitle] = useState();
@@ -137,14 +133,19 @@ export default function MenuListComposition() {
 				</FormControl>
 			</Grid>
 			<Grid>
-				<Button onClick={handleSubmit}>Submit</Button>
+				<Button className={classes.createMuiTheme}  onClick={handleSubmit}>Submit</Button>
 			</Grid>
 			<div>{title}</div>
 			<div>{author}</div>
 			<div>{location}</div>
 			<div>{rating}</div>
 			<div>{mediaType}</div>
-			{mediaArray.map((media, index) => (
+			<div className={classes.cards}>
+	        </div>
+			<Grid container className={classes.root} spacing={2}>
+        <Grid item xs={12}>
+        <Grid container justify="center">
+		{mediaArray.map((media, index) => (
 				<>
 				    <Card className={classes.root} variant="outlined">
 					<CardContent>
@@ -165,26 +166,11 @@ export default function MenuListComposition() {
 					  </Typography>
 					</CardContent>
 				  </Card>
-{/* 			  
-				<ul key={index}>
-					<li>
-						title {index + 1}: {media.title}
-					</li>
-					<li>
-						author {index + 1}: {media.author}
-					</li>
-					<li>
-						location {index + 1}: {media.location}
-					</li>
-					<li>
-						rating {index + 1}: {media.rating}
-					</li>
-					<li>
-						mediaType {index + 1}: {media.mediaType}
-					</li>
-				</ul> */}
-			</>
-			))}
-		</>
+			    </>
+	))} 
+      </Grid>
+      </Grid>  
+      </Grid>
+	  </>
 	);
 }
