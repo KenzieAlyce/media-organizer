@@ -10,13 +10,25 @@ import MenuList from '@material-ui/core/MenuList';
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import { FormControl, FormLabel, Grid, Input } from '@material-ui/core';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
+
 const useStyles = makeStyles((theme) => ({
 	root: {
+		maxWidth:225,
+		 minWidth: 225,
 		display: 'flex',
 	},
 	paper: {
 		marginRight: theme.spacing(2),
 	},
+  title: {
+    fontSize: 14,
+  },
+  pos: {
+    marginBottom: 12,
+  },
 }));
 export default function MenuListComposition() {
 	const classes = useStyles();
@@ -113,6 +125,27 @@ export default function MenuListComposition() {
 			<div>{rating}</div>
 			<div>{mediaType}</div>
 			{mediaArray.map((media, index) => (
+				<>
+				    <Card className={classes.root} variant="outlined">
+					<CardContent>
+					  <Typography className={classes.title} color="textSecondary" gutterBottom>
+					  title {index + 1}: {media.title}
+					  </Typography>
+					  <Typography variant="h5" component="h2">
+					  author {index + 1}: {media.author}
+					  </Typography>
+					  <Typography className={classes.pos} color="textSecondary">
+					  location {index + 1}: {media.location}
+					  </Typography>
+					  <Typography variant="body2" component="p">
+					  rating {index + 1}: {media.rating}
+					  </Typography>
+					  <Typography className={classes.pos} color="textSecondary">
+					  mediaType {index + 1}: {media.mediaType}
+					  </Typography>
+					</CardContent>
+				  </Card>
+{/* 			  
 				<ul key={index}>
 					<li>
 						title {index + 1}: {media.title}
@@ -129,7 +162,8 @@ export default function MenuListComposition() {
 					<li>
 						mediaType {index + 1}: {media.mediaType}
 					</li>
-				</ul>
+				</ul> */}
+			</>
 			))}
 		</>
 	);
