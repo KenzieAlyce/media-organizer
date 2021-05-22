@@ -10,10 +10,6 @@ import { FormControl, FormLabel, Grid, Input } from '@material-ui/core';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import blue from '@material-ui/core/colors/red';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Radio from '@material-ui/core/Radio';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -41,7 +37,6 @@ const useStyles = makeStyles((theme) => ({
 	margin:0,
 	spacing:2,
 	display:Grid,
-
   },
 }));
 
@@ -147,7 +142,7 @@ export default function MenuListComposition() {
         <Grid container justify="center">
 		{mediaArray.map((media, index) => (
 				<>
-				    <Card className={classes.root} variant="outlined">
+				    <Card style={{backgroundColor: `transparent`, shadowOpacity: 0, color: `gray`}} className={classes.root} variant="outlined">
 					<CardContent>
 					  <Typography  variant="h5" component="h2">
 					  Title {index + 1}: {media.title}
