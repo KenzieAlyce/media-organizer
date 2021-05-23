@@ -19,13 +19,17 @@ const sess = {
   };
   
   if (app.get('env') === 'production') {
-    // Use secure cookies in production (requires SSL/TLS)
+    // Use secure c
+    "@auth0/auth0-react": "^1.5.0",ookies in production (requires SSL/TLS)
     sess.cookie.secure = true;
-  
+  .2",
+    "dotenv": "^90.
     // Uncomment the line below if your application is behind a proxy (like on Heroku)
     // or if you're encountering the error message:
     // "Unable to verify authorization request state"
-    // app.set('trust proxy', 1);
+    // app.set('trust",
+    "passport": "^0.4.1",
+    "passport-auth0": "^1.4.0 proxy', 1);
   }
   
   app.use(session(sess));
