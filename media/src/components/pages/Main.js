@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import Button from '@material-ui/core/Button';
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
-import Grow from '@material-ui/core/Grow';
 import Paper from '@material-ui/core/Paper';
-import Popper from '@material-ui/core/Popper';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import Link from '@material-ui/core/Link';
@@ -13,18 +10,19 @@ import { FormControl, FormLabel, Grid, Input } from '@material-ui/core';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import blue from '@material-ui/core/colors/red';
-import { createMuiTheme } from '@material-ui/core/styles';
-
 
 const useStyles = makeStyles((theme) => ({
 	root: {
-		
-		maxWidth:225,
+	    flexGrow:1,
 		 minWidth: 225,
 		display: 'flex',
 	},
+    control:{
+     padding:theme.spacing(2),
+	},
 	paper: {
+		height:225,
+		width:225,
 		marginRight: theme.spacing(2),
 	},
   title: {
@@ -32,23 +30,17 @@ const useStyles = makeStyles((theme) => ({
   },
   pos: {
     marginBottom: 12,
+  }, createMuiTheme: {
+      float:'right',
+  },cards:{
+    maxWidth:1200,
+	margin:0,
+	spacing:2,
+	display:Grid,
   },
 }));
 
-// const theme = createMuiTheme({
-// 	palette: {
-// 	  primary: {
-		
-// 		main: '#3f50b5',
-		
-// 		contrastText: '#fff',
-// 	  },
-	  
-// 	},
-//   });
-
 export default function MenuListComposition() {
-	const primary = blue[500]; 
 	const classes = useStyles();
 	const [open, setOpen] = React.useState(false);
 	const [title, setTitle] = useState();
@@ -100,35 +92,35 @@ export default function MenuListComposition() {
 				style={{ height: '300px' }}
 			>
 				<FormControl>
-					<FormLabel htmlFor='title'>title</FormLabel>
+					<FormLabel htmlFor='title'>Title</FormLabel>
 					<Input
 						id='title'
 						onChange={(e) => setTitle(e.target.value)}
 					/>
 				</FormControl>
 				<FormControl>
-					<FormLabel htmlFor='author'>author</FormLabel>
+					<FormLabel htmlFor='author'>Author</FormLabel>
 					<Input
 						id='author'
 						onChange={(e) => setAuthor(e.target.value)}
 					/>
 				</FormControl>
 				<FormControl>
-					<FormLabel htmlFor='location'>location</FormLabel>
+					<FormLabel htmlFor='location'>Location</FormLabel>
 					<Input
 						id='location'
 						onChange={(e) => setLocation(e.target.value)}
 					/>
 				</FormControl>
 				<FormControl>
-					<FormLabel htmlFor='rating'>rating</FormLabel>
+					<FormLabel htmlFor='rating'>Rating</FormLabel>
 					<Input
 						id='rating'
 						onChange={(e) => setRating(e.target.value)}
 					/>
 				</FormControl>
 				<FormControl>
-					<FormLabel htmlFor='mediaType'>mediaType</FormLabel>
+					<FormLabel htmlFor='mediaType'>Media Type</FormLabel>
 					<Input
 						id='mediaType'
 						onChange={(e) => setMediaType(e.target.value)}
@@ -136,54 +128,44 @@ export default function MenuListComposition() {
 				</FormControl>
 			</Grid>
 			<Grid>
-				<Button onClick={handleSubmit}>Submit</Button>
+				<Button className={classes.createMuiTheme}  onClick={handleSubmit}>Submit</Button>
 			</Grid>
 			<div>{title}</div>
 			<div>{author}</div>
 			<div>{location}</div>
 			<div>{rating}</div>
 			<div>{mediaType}</div>
-			{mediaArray.map((media, index) => (
+			<div className={classes.cards}>
+	        </div>
+			<Grid container className={classes.root} spacing={2}>
+        <Grid item xs={12}>
+        <Grid container justify="center">
+		{mediaArray.map((media, index) => (
 				<>
-				    <Card className={classes.root} variant="outlined">
+				    <Card style={{backgroundColor: `transparent`, shadowOpacity: 0, color: `gray`}} className={classes.root} variant="outlined">
 					<CardContent>
-					  <Typography className={classes.title} color="textSecondary" gutterBottom>
-					  title {index + 1}: {media.title}
+					  <Typography  variant="h5" component="h2">
+					  Title {index + 1}: {media.title}
 					  </Typography>
-					  <Typography variant="h5" component="h2">
-					  author {index + 1}: {media.author}
+					  <Typography variant="h5" component="h6">
+					  Author {index + 1}: {media.author}
 					  </Typography>
-					  <Typography className={classes.pos} color="textSecondary">
-					  location {index + 1}: {media.location}
+					  <Typography variant="h5" component="h6">
+					  Location {index + 1}: {media.location}
 					  </Typography>
-					  <Typography variant="body2" component="p">
-					  rating {index + 1}: {media.rating}
+					  <Typography variant="h5" component="h6">
+					  Rating {index + 1}: {media.rating}
 					  </Typography>
-					  <Typography className={classes.pos} color="textSecondary">
-					  mediaType {index + 1}: {media.mediaType}
+					  <Typography variant="h5" component="h6">
+					  Media Type {index + 1}: {media.mediaType}
 					  </Typography>
 					</CardContent>
 				  </Card>
-{/* 			  
-				<ul key={index}>
-					<li>
-						title {index + 1}: {media.title}
-					</li>
-					<li>
-						author {index + 1}: {media.author}
-					</li>
-					<li>
-						location {index + 1}: {media.location}
-					</li>
-					<li>
-						rating {index + 1}: {media.rating}
-					</li>
-					<li>
-						mediaType {index + 1}: {media.mediaType}
-					</li>
-				</ul> */}
-			</>
-			))}
-		</>
+			    </>
+	))} 
+      </Grid>
+      </Grid>  
+      </Grid>
+	  </>
 	);
 }
