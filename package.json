@@ -7,7 +7,7 @@
     "clientstart": "cd media && npm start",
     "test": "echo \"Error: no test specified\" && exit 1",
     "serverstart": "node server.js",
-    "start": "concurrently --kill-others-on-fail \"npm run serverstart\" \"npm run clientstart\""
+    "start": "./node_modules/.bin/concurrently --kill-others-on-fail \"npm run serverstart\" \"npm run clientstart\""
   },
   "repository": {
     "type": "git",
