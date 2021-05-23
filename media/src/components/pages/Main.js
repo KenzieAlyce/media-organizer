@@ -74,14 +74,6 @@ export default function MenuListComposition() {
 		  media_type: mediaType 
 	  },
     ]);
-
-	// TODO: delete these console logs
-	console.log('title: ', title);
-	console.log('author: ', author);
-	console.log('location: ', location);
-	console.log('rating: ', rating);
-	console.log('mediaType: ', mediaType);
-
     const request = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
