@@ -53,15 +53,30 @@ export default function MenuListComposition() {
   const [mediaType, setMediaType] = useState();
   const [mediaArray, setMediaArray] = useState([]);
 
+  const getAllMedia = async () => {
+    let media = await axios.get("/api/media");
+    return media;
+  }
   // Retrieve media list from database, if any
   useEffect(async () => {
-    let media = await axios.get("/api/media");
+    let media = await getAllMedia();
     console.log("media: ", media);
     setMediaArray(media.data);
   }, []);
 
   // return focus to the button when we transitioned from !open -> open
   const { loginWithRedirect } = useAuth0();
+
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    let allMedia;
+    const id = e.target.dataset.id;
+    console.log('id: ', id);
+    axios.delete("/api/media/" + id);
+    allMedia = await getAllMedia();
+    setMediaArray(allMedia.data);
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setMediaArray((previousArray) => [
@@ -186,6 +201,7 @@ export default function MenuListComposition() {
                     <Typography variant="h5" component="h6">
                       Media Type: {media.media_type}
                     </Typography>
+					          <div data-id={media.id} onClick={handleDelete}>Delete</div>
                   </CardContent>
                 </Card>
               </>
