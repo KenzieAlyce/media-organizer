@@ -6,15 +6,12 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import Switch from '@material-ui/core/Switch';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import MenuList from '@material-ui/core/MenuList';
 import Link from '@material-ui/core/Link';
+import { useAuth0 } from "@auth0/auth0-react";
 /* eslint-disable */
-
+/**=================================================**/
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -26,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
 }));
-
+/**=================================================**/
 export default function MenuAppBar() {
   const classes = useStyles();
   const [auth, setAuth] = React.useState(true);
@@ -60,6 +57,8 @@ export default function MenuAppBar() {
   const handleCloseMenu = () => {
     setMenu(null);
   };
+
+  const { loginWithRedirect } = useAuth0();
 
   return (
     <div className={classes.root}>
@@ -95,8 +94,8 @@ export default function MenuAppBar() {
          open={open}
          onClose={handleCloseMenu}> 
           <MenuItem onClick={handleCloseMenu}><Link href="/">Main</Link></MenuItem>
-          <MenuItem onClick={handleCloseMenu}><Link href="/SignUp">SignUp</Link></MenuItem>
-          <MenuItem onClick={handleCloseMenu}><Link href="/SignIn">SignIn</Link></MenuItem>
+          {/* <MenuItem onClick={handleCloseMenu}><Link href="/SignUp">SignUp</Link></MenuItem> */}
+          <MenuItem onClick={() => loginWithRedirect()}><Link href="/SignIn">SignIn</Link></MenuItem>
           
         </Menu>
           <Typography variant="h6" className={classes.title}>
