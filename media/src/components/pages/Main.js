@@ -4,14 +4,14 @@ import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import MenuItem from "@material-ui/core/MenuItem";
 import MenuList from "@material-ui/core/MenuList";
-import Link from "@material-ui/core/Link";
 import { makeStyles } from "@material-ui/core/styles";
 import { FormControl, FormLabel, Grid, Input } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import axios from "axios";
-
+import randomColor from 'randomcolor';
+/**=================================================**/
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -42,10 +42,10 @@ const useStyles = makeStyles((theme) => ({
     display: Grid,
   },
 }));
-
+/**=================================================**/
 export default function MenuListComposition() {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const [open] = React.useState(false);
   const [title, setTitle] = useState();
   const [author, setAuthor] = useState();
   const [location, setLocation] = useState();
@@ -69,11 +69,14 @@ export default function MenuListComposition() {
 
   const handleDelete = async (e) => {
     e.preventDefault();
+    console.log("clicked");
     let allMedia;
+    console.log('target', e.currentTarget.getAttribute("data-id") );
     const id = e.target.dataset.id;
     console.log('id: ', id);
     axios.delete("/api/media/" + id);
     allMedia = await getAllMedia();
+    console.log('all media', allMedia)
     setMediaArray(allMedia.data);
   }
 
@@ -109,6 +112,9 @@ export default function MenuListComposition() {
     setRating("");
     setMediaType("");
   };
+
+  let color = randomColor();
+
   return (
     <>
       <div className={classes.root}>
@@ -117,9 +123,6 @@ export default function MenuListComposition() {
             <MenuList>
               <MenuItem key="profile">Profile</MenuItem>
               <MenuItem key="my-account">My account</MenuItem>
-              <MenuItem key="signup">
-                <Link href="/SignUp">Sign Up</Link>
-              </MenuItem>
               <MenuItem key="login" onClick={() => loginWithRedirect()}>
                 Login
               </MenuItem>
@@ -178,9 +181,9 @@ export default function MenuListComposition() {
                 <Card
                   key={index}
                   style={{
-                    backgroundColor: `transparent`,
+                    backgroundColor: `${color}`,
                     shadowOpacity: 0,
-                    color: `gray`,
+                    color: `black`,
                   }}
                   className={classes.root}
                   variant="outlined"
@@ -201,7 +204,7 @@ export default function MenuListComposition() {
                     <Typography variant="h5" component="h6">
                       Media Type: {media.media_type}
                     </Typography>
-					          <div data-id={media.id} onClick={handleDelete}>Delete</div>
+					           <Button color="primary" variant="contained" data-id={media.id} onClick={handleDelete}>Delete</Button>
                   </CardContent>
                 </Card>
               </>
