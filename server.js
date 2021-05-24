@@ -9,7 +9,7 @@ const app = express();
 app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static("./media/public"));
+app.use(express.static("./media/build"));
 
 const sess = {
     secret: 'I drive a transit',
