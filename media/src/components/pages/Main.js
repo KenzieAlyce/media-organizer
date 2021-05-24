@@ -204,7 +204,7 @@ export default function MenuListComposition() {
                     <Typography variant="h5" component="h6">
                       Media Type: {media.media_type}
                     </Typography>
-					          {/* <Button color="primary" variant="contained" data-id={media.id} onClick={handleDelete}>Delete</Button> */}
+					           <Button color="primary" variant="contained" data-id={media.id} onClick={handleDelete}>Delete</Button>
                   </CardContent>
                 </Card>
               </>
