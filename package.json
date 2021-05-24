@@ -4,10 +4,13 @@
   "description": "Goals for app\r - Keep track of media content\r - Document resources of media \r - Help recall past series/media usage \r - Where it was purchased/where it's located\r - Social media-bond over media type\r People frequently access a variety of media content (books, music, movies, games) from an ever larger variety of sources. It can be difficult to keep track of where you've accessed it, where it's stored, and to always remember what you've seen or purchased. This application would create a simple way for users to keep track of all their media consumption and all the media they own in type and location.",
   "main": "server.js",
   "scripts": {
-    "clientstart": "cd media && npm start",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "serverstart": "node server.js",
-    "start": "./node_modules/.bin/concurrently --kill-others-on-fail \"npm run serverstart\" \"npm run clientstart\""
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'media/*'\" \"npm run media\"",
+    "media": "cd media && npm run start",
+    "install": "cd media && npm install",
+    "build": "cd media && npm run build",
+    "heroku-postbuild": "npm run build"
   },
   "repository": {
     "type": "git",
